@@ -72,10 +72,10 @@ public class Event {
 	public void setLocalization(String localization) {
 		this.localization = localization;
 	}
-	public Set<Programation> getProgramation() {
+	public Set<Programation> getProgramations() {
 		return programations;
 	}
-	public void setPages(Set<Programation> programations) {
+	public void setProgramations(Set<Programation> programations) {
 		this.programations = programations;
 	}
 	

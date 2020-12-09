@@ -8,6 +8,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 @Entity
 @Table(name="programation")
@@ -29,6 +32,7 @@ public class Programation {
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "event_id", nullable = false)
+	@JsonIgnore
     public Event event;
 		
 	public int getId() {
@@ -98,6 +102,16 @@ public class Programation {
 		this.finishRegistration = finishRegistration;
 	}
 	
+	@JsonIgnore
+	public Event getEvent() {
+		return event;
+	}
+	
+	@JsonProperty
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+	
 	@Override
 	public String toString() {
 		return "Programation [id=" + id + ", name=" + name + ", beginDate=" + beginDate + ", finishDate=" + finishDate
@@ -124,7 +138,7 @@ public class Programation {
 	}
 	
 	public Programation(String name, String beginDate, String finishDate, String description, String startTime,
-			String endTime, String presenter, int workload, String beginRegistration, String finishRegistration) {
+			String endTime, String presenter, int workload, String beginRegistration, String finishRegistration, Event event) {
 		super();
 		this.name = name;
 		this.beginDate = beginDate;
@@ -136,6 +150,7 @@ public class Programation {
 		this.workload = workload;
 		this.beginRegistration = beginRegistration;
 		this.finishRegistration = finishRegistration;
+		this.event = event;
 	}
 	
 	public Programation() {

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.ufc.crateus.events.model.Event;
 import br.ufc.crateus.events.model.Programation;
 import br.ufc.crateus.events.repository.ProgramationRepository;
  
@@ -16,10 +17,10 @@ public class ProgramationService {
  
     public Programation addProgramation(String name, String beginDate, String finishDate, String description,
             String startTime, String endTime, String presenter, int workload, String beginRegistration,
-            String finishRegistration) {
+            String finishRegistration, Event event) {
         
         Programation Programation = new Programation(name, beginDate, finishDate, description, startTime,
-             endTime, presenter, workload, beginRegistration, finishRegistration);
+             endTime, presenter, workload, beginRegistration, finishRegistration, event);
         
         return ProgramationRepo.save(Programation);
     }
