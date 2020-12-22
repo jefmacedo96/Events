@@ -2,6 +2,7 @@ package br.ufc.crateus.events.service;
 
 import java.util.List;
 
+import br.ufc.crateus.events.model.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

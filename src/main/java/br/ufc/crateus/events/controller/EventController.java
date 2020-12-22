@@ -17,7 +17,7 @@ import br.ufc.crateus.events.service.EventService;
 
 @RestController
 @CrossOrigin
-@RequestMapping(path = "/api/events")
+    @RequestMapping(path = "/api/events")
 public class EventController {
  
     @Autowired
