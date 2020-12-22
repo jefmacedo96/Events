@@ -46,7 +46,8 @@ public class ProgramationController {
                 programation.getPresenter(),
                 programation.getWorkload(),
                 programation.getBeginRegistration(),
-                programation.getFinishRegistration()), HttpStatus.OK);
+                programation.getFinishRegistration(),
+                programation.getEvent()), HttpStatus.OK);
     }
  
     @RequestMapping(method = RequestMethod.PUT, value = "{id}")

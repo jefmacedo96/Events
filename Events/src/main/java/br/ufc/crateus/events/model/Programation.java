@@ -1,5 +1,8 @@
 package br.ufc.crateus.events.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="programation")
 public class Programation {
-	
+
 	@Id
 	@GeneratedValue
 	int id;
@@ -26,11 +29,21 @@ public class Programation {
 	int workload; //carga-horária
 	String beginRegistration;
 	String finishRegistration;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "event_id", nullable = false)
+	@JsonIgnore
     public Event event;
-		
+
+	@JsonIgnore
+	public Event getEvent() {
+		return event;
+	}
+	@JsonProperty
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -97,7 +110,7 @@ public class Programation {
 	public void setFinishRegistration(String finishRegistration) {
 		this.finishRegistration = finishRegistration;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Programation [id=" + id + ", name=" + name + ", beginDate=" + beginDate + ", finishDate=" + finishDate
@@ -105,7 +118,7 @@ public class Programation {
 				+ ", presenter=" + presenter + ", workload=" + workload + ", beginRegistration=" + beginRegistration
 				+ ", finishRegistration=" + finishRegistration + "]";
 	}
-	
+
 	public Programation(int id, String name, String beginDate, String finishDate, String description, String startTime,
 			String endTime, String presenter, int workload, String beginRegistration, String finishRegistration, Event event) {
 		super();
@@ -122,9 +135,9 @@ public class Programation {
 		this.finishRegistration = finishRegistration;
 		this.event = event;
 	}
-	
+
 	public Programation(String name, String beginDate, String finishDate, String description, String startTime,
-			String endTime, String presenter, int workload, String beginRegistration, String finishRegistration) {
+			String endTime, String presenter, int workload, String beginRegistration, String finishRegistration, Event event) {
 		super();
 		this.name = name;
 		this.beginDate = beginDate;
@@ -136,12 +149,13 @@ public class Programation {
 		this.workload = workload;
 		this.beginRegistration = beginRegistration;
 		this.finishRegistration = finishRegistration;
+		this.event = event;
 	}
-	
+
 	public Programation() {
 		super();
 	}
-	
+
 }
 
 
