@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 @Entity
 @Table(name="programation")
@@ -110,7 +113,17 @@ public class Programation {
 	public void setFinishRegistration(String finishRegistration) {
 		this.finishRegistration = finishRegistration;
 	}
-
+	
+	@JsonIgnore
+	public Event getEvent() {
+		return event;
+	}
+	
+	@JsonProperty
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+	
 	@Override
 	public String toString() {
 		return "Programation [id=" + id + ", name=" + name + ", beginDate=" + beginDate + ", finishDate=" + finishDate
